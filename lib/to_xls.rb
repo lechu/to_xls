@@ -51,7 +51,7 @@ class Array
       #relation support
       test = column.to_s.match(/^(.*)__(.*)$/)
       if test
-        row.push(item.send(test[1]).send(test[2]).to_s)
+        row.push(item.send(test[1]).send(test[2]).to_s.strip())
       else
       	row.push(item.send(column))
       end
