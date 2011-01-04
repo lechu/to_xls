@@ -49,7 +49,7 @@ class Array
       row.push(nil)
     elsif column.is_a?(String) or column.is_a?(Symbol)
       #relation support
-      test = match(/^(.*)__(.*)$/)
+      test = column.to_s.match(/^(.*)__(.*)$/)
       if test
         row.push(item.send(test[1]).send(test[2]))
       else
