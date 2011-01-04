@@ -60,7 +60,7 @@ class Array
     if item.nil?
       row.push(nil)
     elsif column.is_a?(String) or column.is_a?(Symbol)
-      row.push("#{item.class.name.underscore}_#{column}")
+      row.push(I18n.t("#{item.class.name.underscore}_#{column}"))
     elsif column.is_a?(Hash)
       column.each{|key, values| aux_headers_to_xls(item.send(key), values, row)}
     elsif column.is_a?(Array)
