@@ -48,7 +48,13 @@ class Array
     if item.nil?
       row.push(nil)
     elsif column.is_a?(String) or column.is_a?(Symbol)
-      row.push(item.send(column))
+      #relation support
+      test = match(/^(.*)__(.*)$/)
+      if test
+        row.push(item.send(test[1]).send(test[2]))
+      else
+      	row.push(item.send(column))
+      end
     elsif column.is_a?(Hash)
       column.each{|key, values| aux_to_xls(item.send(key), values, row)}
     elsif column.is_a?(Array)
